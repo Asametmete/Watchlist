@@ -15,6 +15,8 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/watchlist", watchlistRoutes);
+app.use("/api/movies", require("./routes/movies"));
+
 
 mongoose
   .connect(process.env.MONGO_URI)

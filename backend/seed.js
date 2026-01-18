@@ -78,7 +78,7 @@ const movies = [
   {
     title: "Saving Private Ryan",
     year: 1998,
-    poster: "https://image.tmdb.org/t/p/w500/uqx37c6ZV8lrvnu1QNN9HmDkvcH.jpg",
+    poster: "https://image.tmdb.org/t/p/w500/https://media.themoviedb.org/t/p/original/uqx37cS8cpHg8U35f9U5IBlrCV3.jpg.jpg",
     genre: ["Drama", "War"]
   },
   {
@@ -138,13 +138,13 @@ const movies = [
   {
     title: "American History X",
     year: 1998,
-    poster: "https://image.tmdb.org/t/p/w500/fXepRAYOx1qC3wju7XdDGx60775.jpg",
+    poster: "https://media.themoviedb.org/t/p/original/x2drgoXYZ8484lqyDj7L1CEVR4T.jpg",
     genre: ["Drama"]
   },
   {
     title: "The Usual Suspects",
     year: 1995,
-    poster: "https://image.tmdb.org/t/p/w500/9Xw0I5RV2ZqNLpul6lMQSJ8fo6P.jpg",
+    poster: "https://media.themoviedb.org/t/p/original/6GZuBIZnBvbt3yi8hfq4RHVIb5P.jpg",
     genre: ["Crime", "Mystery", "Thriller"]
   },
   {

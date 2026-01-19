@@ -9,16 +9,24 @@ function Home() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedGenre, setSelectedGenre] = useState("All");
   const [genres, setGenres] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const fetchMovies = async () => {
-    const res = await api.get("/movies");
-    setMovies(res.data);
-    setFilteredMovies(res.data);
-    
-    // Tüm kategorileri çıkar
-    const allGenres = res.data.flatMap(movie => movie.genre || []);
-    const uniqueGenres = ["All", ...new Set(allGenres)];
-    setGenres(uniqueGenres);
+    try {
+      setLoading(true);
+      const res = await api.get("/movies");
+      setMovies(res.data);
+      setFilteredMovies(res.data);
+      
+      // Tüm kategorileri çıkar
+      const allGenres = res.data.flatMap(movie => movie.genre || []);
+      const uniqueGenres = ["All", ...new Set(allGenres)];
+      setGenres(uniqueGenres);
+    } catch (error) {
+      console.error("Filmler yüklenemedi:", error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
@@ -89,7 +97,12 @@ function Home() {
       </div>
 
       {/* Movies Grid */}
-      {filteredMovies.length === 0 ? (
+      {loading ? (
+        <div className="loading-state">
+          <div className="spinner"></div>
+          <p>Loading movies... Backend is waking up ☕</p>
+        </div>
+      ) : filteredMovies.length === 0 ? (
         <div className="no-results">
           <p>No movies found 😔</p>
         </div>

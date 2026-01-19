@@ -12,4 +12,17 @@ router.get("/", async (req, res) => {
   }
 });
 
+// Tek bir film getir
+router.get("/:id", async (req, res) => {
+  try {
+    const movie = await AvailableMovie.findById(req.params.id);
+    if (!movie) {
+      return res.status(404).json({ error: "Film bulunamadı" });
+    }
+    res.json(movie);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
 module.exports = router;

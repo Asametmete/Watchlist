@@ -10,7 +10,19 @@ const watchlistMovieSchema = new mongoose.Schema({
   watched: {
     type: Boolean,
     default: false
-  }
+  },
+  genre: {
+    type: [String],
+    default: []
+  },
+  rating: {
+    type: Number,
+    default: 0,
+    min: 0,
+    max: 10
+  },
+  runtime: Number,
+  overview: String
 }, { 
   timestamps: true 
 });

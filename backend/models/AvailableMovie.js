@@ -10,7 +10,15 @@ const availableMovieSchema = new mongoose.Schema({
   genre: {
     type: [String],
     default: []
-  }
+  },
+  rating: {
+    type: Number,
+    default: 0,
+    min: 0,
+    max: 10
+  },
+  runtime: Number, // Dakika cinsinden
+  overview: String // Film özeti
 }, { 
   timestamps: true 
 });

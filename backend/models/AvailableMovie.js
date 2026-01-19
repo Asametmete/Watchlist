@@ -17,8 +17,8 @@ const availableMovieSchema = new mongoose.Schema({
     min: 0,
     max: 10
   },
-  runtime: Number, // Dakika cinsinden
-  overview: String // Film özeti
+  runtime: Number, 
+  overview: String 
 }, { 
   timestamps: true 
 });

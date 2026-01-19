@@ -15,7 +15,7 @@ function MovieDetail() {
         const res = await api.get(`/movies/${id}`);
         setMovie(res.data);
       } catch (error) {
-        console.error("Film bulunamadı:", error);
+        console.error("Film did not found:", error);
       } finally {
         setLoading(false);
       }
@@ -28,12 +28,12 @@ function MovieDetail() {
     try {
       const { _id, __v, ...movieData } = movie;
       await api.post("/watchlist", movieData);
-      alert("Film watchlist'e eklendi ✅");
+      alert("Film added the watchlist");
     } catch (error) {
       if (error.response?.data?.error?.includes("zaten")) {
-        alert("Bu film zaten watchlist'te!");
+        alert("This film exist in the watchlist");
       } else {
-        alert("Hata: " + (error.response?.data?.error || "Bilinmeyen hata"));
+        alert("Error: " + (error.response?.data?.error || "Unknown Error"));
       }
     }
   };

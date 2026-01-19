@@ -20,7 +20,7 @@ function Watchlist() {
       await api.put(`/watchlist/${id}`, { watched: !currentStatus });
       fetchWatchlist();
     } catch (error) {
-      console.error("Hata:", error);
+      console.error("Error:", error);
     }
   };
 
@@ -29,7 +29,7 @@ function Watchlist() {
       await api.delete(`/watchlist/${id}`);
       fetchWatchlist();
     } catch (error) {
-      console.error("Hata:", error);
+      console.error("Error:", error);
     }
   };
 

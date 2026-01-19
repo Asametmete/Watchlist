@@ -11,7 +11,7 @@ app.use(cors());
 app.use(express.json());
 
 app.get("/", (req, res) => {
-  res.send("Backend & MongoDB çalışıyor 🚀");
+  res.send("Backend & MongoDB working");
 });
 
 app.use("/api/watchlist", watchlistRoutes);
@@ -21,11 +21,11 @@ app.use("/api/movies", require("./routes/movies"));
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => {
-    console.log("MongoDB bağlantısı başarılı");
+    console.log("connect to MongoDB succesfully");
     app.listen(process.env.PORT, () => {
-      console.log(`Server ${process.env.PORT} portunda çalışıyor`);
+      console.log(`Server work on the port ${process.env.PORT}`);
     });
   })
   .catch((err) => {
-    console.error("MongoDB bağlantı hatası:", err);
+    console.error("MongoDB connection error:", err);
   });

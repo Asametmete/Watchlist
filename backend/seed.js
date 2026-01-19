@@ -332,17 +332,17 @@ const movies = [
 const seedDB = async () => {
   try {
     await mongoose.connect(process.env.MONGO_URI);
-    console.log("MongoDB'ye bağlandı");
+    console.log("connect the MongoDB");
 
     await AvailableMovie.deleteMany({});
-    console.log("Eski veriler silindi");
+    console.log("Old data deleted");
 
     await AvailableMovie.insertMany(movies);
-    console.log(`${movies.length} film eklendi ✅`);
+    console.log(`${movies.length} film added`);
 
     mongoose.connection.close();
   } catch (error) {
-    console.error("Hata:", error);
+    console.error("Error:", error);
   }
 };
 

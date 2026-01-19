@@ -23,7 +23,7 @@ function Home() {
       const uniqueGenres = ["All", ...new Set(allGenres)];
       setGenres(uniqueGenres);
     } catch (error) {
-      console.error("Filmler yüklenemedi:", error);
+      console.error("Films did not loaded:", error);
     } finally {
       setLoading(false);
     }
@@ -57,13 +57,13 @@ function Home() {
     try {
       const { _id, __v, ...movieData } = movie;
       await api.post("/watchlist", movieData);
-      alert("Film watchlist'e eklendi ✅");
+      alert("Film added the watchlist");
     } catch (error) {
-      console.error("Hata:", error.response?.data);
+      console.error("error:", error.response?.data);
       if (error.response?.data?.error?.includes("zaten")) {
-        alert("Bu film zaten watchlist'te!");
+        alert("This movie exist in the watchlist");
       } else {
-        alert("Hata: " + (error.response?.data?.error || "Bilinmeyen hata"));
+        alert("Error: " + (error.response?.data?.error || "Unknown Error"));
       }
     }
   };

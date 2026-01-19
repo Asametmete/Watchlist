@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const AvailableMovie = require("../models/AvailableMovie");
 
-// Tüm filmleri getir
+
 router.get("/", async (req, res) => {
   try {
     const movies = await AvailableMovie.find().sort({ createdAt: -1 });
@@ -12,12 +12,12 @@ router.get("/", async (req, res) => {
   }
 });
 
-// Tek bir film getir
+
 router.get("/:id", async (req, res) => {
   try {
     const movie = await AvailableMovie.findById(req.params.id);
     if (!movie) {
-      return res.status(404).json({ error: "Film bulunamadı" });
+      return res.status(404).json({ error: "Film not found" });
     }
     res.json(movie);
   } catch (error) {

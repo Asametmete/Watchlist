@@ -2,17 +2,17 @@ const express = require("express");
 const router = express.Router();
 const WatchlistMovie = require("../models/WatchlistMovie");
 
-// 🔹 Film ekle
+
 router.post("/", async (req, res) => {
   try {
-    // Aynı film var mı kontrol et
+  
     const existingMovie = await WatchlistMovie.findOne({ 
       title: req.body.title 
     });
     
     if (existingMovie) {
       return res.status(400).json({ 
-        error: "Bu film zaten watchlist'te!" 
+        error: "This movie exist in the watchlist" 
       });
     }
 
@@ -24,7 +24,6 @@ router.post("/", async (req, res) => {
   }
 });
 
-// 🔹 Tüm filmleri getir
 router.get("/", async (req, res) => {
   try {
     const movies = await WatchlistMovie.find().sort({ createdAt: -1 });
@@ -34,7 +33,6 @@ router.get("/", async (req, res) => {
   }
 });
 
-// 🔹 Filmi watched yap
 router.put("/:id", async (req, res) => {
   try {
     const updatedMovie = await WatchlistMovie.findByIdAndUpdate(
@@ -48,11 +46,10 @@ router.put("/:id", async (req, res) => {
   }
 });
 
-// 🔹 Film sil
 router.delete("/:id", async (req, res) => {
   try {
     await WatchlistMovie.findByIdAndDelete(req.params.id);
-    res.json({ message: "Film silindi" });
+    res.json({ message: "Film deleted" });
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
